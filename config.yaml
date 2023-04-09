@@ -25,9 +25,10 @@ modeling:
   max_tfidf_features: 5
   # NOTE: you can put here any parameter that is accepted by the constructor of
   # RandomForestRegressor. This is a subsample, but more could be added:
+  output_artifact: "random_forest_export"
   random_forest:
     n_estimators: 100
-    max_depth: 15
+    max_depth: 6
     min_samples_split: 4
     min_samples_leaf: 3
     # Here -1 means all available cores
