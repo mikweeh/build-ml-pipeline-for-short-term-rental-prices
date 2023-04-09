@@ -3,6 +3,9 @@ import pandas as pd
 import wandb
 
 
+# Use this function to catch all the input parameters
+# All of them are stored in the request object that will
+# be used in the following functions
 def pytest_addoption(parser):
     parser.addoption("--csv", action="store")
     parser.addoption("--ref", action="store")
@@ -11,12 +14,17 @@ def pytest_addoption(parser):
     parser.addoption("--max_price", action="store")
 
 
+# Define here each variable name used as input in the file test_data.py
+# as a function with the decorator @pytest.fixture, and with "request"
+# as input of the function
 @pytest.fixture(scope='session')
 def data(request):
+    # Use request.config.option.XXX to retrieve the option XXX from above
+    # Example: To get the variable "csv" type "request.config.option.csv"
     run = wandb.init(job_type="data_tests", resume=True)
 
     # Download input artifact. This will also note that this script is using this
-    # particular version of the artifact
+    # particular version of the artifact.
     data_path = run.use_artifact(request.config.option.csv).file()
 
     if data_path is None:
