@@ -25,7 +25,11 @@ _steps = [
 def go(config: DictConfig):
 
     # Setup the wandb experiment. All runs will be grouped under this name
+    # It takes the value of the project name from the config.yaml file in section
+    # main and segment project_name
     os.environ["WANDB_PROJECT"] = config["main"]["project_name"]
+    # It takes the value of the experiment name from the config.yaml file in section
+    # main and segment experiment_name
     os.environ["WANDB_RUN_GROUP"] = config["main"]["experiment_name"]
 
     # Steps to execute
