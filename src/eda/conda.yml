@@ -11,4 +11,4 @@ dependencies:
   - pandas-profiling=3.6.3
   - pyarrow=11.0.0
   - pip:
-      - wandb==0.14.0
+      - wandb==0.14.2
